@@ -1,0 +1,16 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.welcome h1 {
+  color: antiquewhite;
+  font-size: 25px;
+  font-weight: 700;
+}
+.welcome h1 span {
+  color: var(--light-green);
+}

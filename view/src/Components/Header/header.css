@@ -1,0 +1,57 @@
+.header {
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(71, 71, 71);
+}
+.header .logo {
+  flex: 0.5;
+  font-size: 25px;
+  font-weight: 700;
+  color: white;
+}
+.header .logo span {
+  color: var(--light-green);
+}
+.header .menu {
+  flex: 0.5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.header .menu ul {
+  align-items: center;
+  display: flex;
+  gap: 40px;
+  color: antiquewhite;
+}
+.header .menu ul li:hover {
+  color: var(--light-green);
+}
+.header .h-btns button {
+  margin-left: 15px;
+  color: var(--black-bg);
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: var(--light-green);
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.header .h-btns button:nth-child(1) {
+  border: 1px solid var(--light-green);
+  background-color: transparent;
+  color: antiquewhite;
+}
+.header .h-btns button:nth-child(1):hover {
+  background-color: var(--light-green);
+  color: var(--black-bg);
+}
+
+.link {
+  all: inherit;
+  cursor: pointer;
+}

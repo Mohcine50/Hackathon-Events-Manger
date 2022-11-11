@@ -1,0 +1,50 @@
+.register {
+  margin-top: 20px;
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+}
+
+.register form input {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid var(--dark-green);
+  color: rgb(255, 255, 255);
+  height: 25px;
+  padding: 10px;
+}
+
+.register form input:focus {
+  border-bottom: 1px solid var(--light-green);
+  transition: all 1s ease;
+}
+
+.register form input[type="submit"] {
+  color: var(--black-bg);
+  font-size: 16px;
+  padding: 10px;
+  background-color: var(--light-green);
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 50px;
+}
+
+.register p {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.link-w {
+  color: var(--light-green);
+  text-decoration: none;
+}
