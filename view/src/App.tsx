@@ -8,6 +8,7 @@ import HomeCon from "./Pages/Home/HomeCon";
 import Welcome from "./Pages/Welcome/Welcome";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
+import { useState } from "react";
 function App() {
   return (
     <Router>
