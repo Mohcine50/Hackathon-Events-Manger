@@ -9,6 +9,7 @@ import Welcome from "./Pages/Welcome/Welcome";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import { useState } from "react";
+import Profile from "./Pages/Profile/Profile";
 function App() {
   return (
     <Router>
@@ -19,6 +20,7 @@ function App() {
               <Route path='/' element={<HomeCon />} />
               <Route path='/about' element={<About />} />
               <Route path='/events' element={<Events />} />
+              <Route path='/profile/:userId' element={<Profile />} />
             </Route>
             <Route path='/' element={<Welcome />}>
               <Route path='/login' element={<Login />} />
