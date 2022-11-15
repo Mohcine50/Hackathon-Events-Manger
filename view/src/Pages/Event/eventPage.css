@@ -1,0 +1,50 @@
+.eventPage {
+  color: antiquewhite;
+  padding: 30px 0px;
+}
+.eventPage .infos > img {
+  max-width: 30vw;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.eventPage .infos {
+  text-align: center;
+}
+
+.eventPage .infos:after {
+  content: "";
+  height: 1px;
+  width: 60vw;
+  background-color: rgb(75, 75, 75);
+  display: inline-block;
+}
+.eventPage .infos h1 {
+  color: white;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 20px 0px;
+}
+
+.eventPage .infos .more-infos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+.eventPage .infos .more-infos h2 {
+  font-size: 15px;
+  font-weight: 400;
+}
+.eventPage > h1 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 20px 0px;
+}
+.eventPage .Participants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}

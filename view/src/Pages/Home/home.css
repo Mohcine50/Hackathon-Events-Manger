@@ -45,7 +45,9 @@
   color: white;
   font-weight: 700;
   font-size: 25px;
+  margin-top: 25px;
 }
+
 .home .upcoming .home-events {
   margin-top: 20px;
   display: grid;
@@ -56,4 +58,10 @@
   row-gap: 25px;
   box-sizing: border-box;
   justify-items: center;
+}
+.home .public-users {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
 }

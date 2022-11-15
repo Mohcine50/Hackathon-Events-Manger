@@ -4,6 +4,7 @@ import event from "../../Images/event.svg";
 import Event from "../../Components/Event/Event";
 import Header from "../../Components/Header/Header";
 import { Outlet } from "react-router-dom";
+import Participant from "../../Components/Participants/Participant";
 function HomeCon() {
   return (
     <div className='home'>
@@ -28,6 +29,23 @@ function HomeCon() {
           <Event />
           <Event />
           <Event />
+        </div>
+        <h1>Public Users</h1>
+        <div className='public-users'>
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
+          <Participant />
         </div>
       </div>
     </div>

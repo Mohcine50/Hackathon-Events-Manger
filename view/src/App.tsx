@@ -10,6 +10,7 @@ import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import { useState } from "react";
 import Profile from "./Pages/Profile/Profile";
+import EventPage from "./Pages/Event/EventPage";
 function App() {
   return (
     <Router>
@@ -21,6 +22,7 @@ function App() {
               <Route path='/about' element={<About />} />
               <Route path='/events' element={<Events />} />
               <Route path='/profile/:userId' element={<Profile />} />
+              <Route path='/event/:eventId' element={<EventPage />} />
             </Route>
             <Route path='/' element={<Welcome />}>
               <Route path='/login' element={<Login />} />
