@@ -7,10 +7,11 @@ const event = require("./Routes/event-route");
 const submition = require("./Routes/submition-route");
 const { validate } = require("./Util/middlewares");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+app.use(cors());
 app.use(cookieParser());
 
 app.use(express.json());

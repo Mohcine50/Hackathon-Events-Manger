@@ -44,10 +44,10 @@ const login = async (req, res) => {
       .status(400)
       .json({ message: "No user associated with this email" });
   }
-  console.log(user.password);
+
   const result = await passwordCompare(user.password, password);
   if (!result) {
-    return res.status(400).json({ message: "Wrong passowrd" });
+    return res.status(400).json({ message: "Wrong password" });
   }
 
   const token = jwt.sign({ id: user._id }, process.env.SECRET_TOKEN_PHRASE);

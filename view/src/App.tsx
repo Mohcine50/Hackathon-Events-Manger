@@ -11,27 +11,32 @@ import Register from "./Components/Register/Register";
 import { useState } from "react";
 import Profile from "./Pages/Profile/Profile";
 import EventPage from "./Pages/Event/EventPage";
+import { Provider } from "react-redux";
+import store from "./store";
+
 function App() {
   return (
-    <Router>
-      <div className='App'>
-        <div className='container'>
-          <Routes>
-            <Route path='/' element={<Home />}>
-              <Route path='/' element={<HomeCon />} />
-              <Route path='/about' element={<About />} />
-              <Route path='/events' element={<Events />} />
-              <Route path='/profile/:userId' element={<Profile />} />
-              <Route path='/event/:eventId' element={<EventPage />} />
-            </Route>
-            <Route path='/' element={<Welcome />}>
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-            </Route>
-          </Routes>
+    <Provider store={store}>
+      <Router>
+        <div className='App'>
+          <div className='container'>
+            <Routes>
+              <Route path='/' element={<Home />}>
+                <Route path='/' element={<HomeCon />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/events' element={<Events />} />
+                <Route path='/profile/:userId' element={<Profile />} />
+                <Route path='/event/:eventId' element={<EventPage />} />
+              </Route>
+              <Route path='/' element={<Welcome />}>
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+              </Route>
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </Provider>
   );
 }
 

@@ -62,6 +62,6 @@
 .home .public-users {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 27px;
   margin-top: 20px;
 }
