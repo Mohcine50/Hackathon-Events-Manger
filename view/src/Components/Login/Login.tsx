@@ -18,7 +18,9 @@ function Login() {
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(login({ email, password }));
+    if (email != "" && password != "") {
+      dispatch(login({ email, password }));
+    }
   };
   useEffect(() => {
     if (loginMessage == "Login Successful") {
@@ -47,7 +49,7 @@ function Login() {
         />
         <input type='submit' value='Login' />
       </form>
-      <> {loading && <h2>loading</h2>}</>
+      <> {loading && <h2 className='loading'>loading</h2>}</>
 
       <p>
         You don't have an account{" "}

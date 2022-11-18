@@ -30,7 +30,7 @@ const register = async (req, res) => {
     await user.save();
     res.status(200).json({ user });
   } catch (error) {
-    console.log(error);
+    return res.status(400).json({ message: "we couldn't register " });
   }
 };
 

@@ -48,3 +48,9 @@
   color: var(--light-green);
   text-decoration: none;
 }
+.loading {
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  margin-top: 8px;
+}
