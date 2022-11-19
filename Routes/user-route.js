@@ -2,8 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { register, login, logOut } = require("../Controllers/user-controller");
 
-router.get("/", (req, res) => {
-  res.send("welcome on user route");
+const { validate } = require("../Util/middlewares");
+
+router.get("/", validate, (req, res) => {
+  const user = req.user;
+  res.status(201).json(user);
 });
 
 router.post("/register", register);

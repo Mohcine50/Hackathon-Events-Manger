@@ -49,8 +49,9 @@
   text-decoration: none;
 }
 
-#password_match {
+.password_match {
   color: rgb(235, 0, 59);
   font-size: 14px;
   font-weight: 400;
+  margin-top: 10px;
 }

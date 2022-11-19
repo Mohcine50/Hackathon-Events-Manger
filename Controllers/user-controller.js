@@ -60,7 +60,7 @@ const login = async (req, res) => {
     .json({ user, token });
 };
 
-logOut = async (req, res) => {
+const logOut = async (req, res) => {
   return res
     .clearCookie("token")
     .status(200)

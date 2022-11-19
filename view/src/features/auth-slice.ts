@@ -12,11 +12,6 @@ interface IRegister {
 }
 
 const API_URL = "http://localhost:3000";
-const CONFIG = {
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
 
 export const register = createAsyncThunk(
   "auth/register",
@@ -27,32 +22,49 @@ export const register = createAsyncThunk(
       password,
     });
     try {
-      const res = await axios.post(
-        `${API_URL}/api/user/register`,
+      const res = await fetch(`${API_URL}/api/user/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body,
-        CONFIG
-      );
-      const data = await res.data;
+      });
+      const data = await res.json();
       return data;
     } catch (error) {
-      const err = error as AxiosError;
-      return err.response?.data;
+      console.log(error);
     }
   }
 );
+
+export const isLoged = createAsyncThunk("auth/isLoged", async (thunkAPI) => {
+  try {
+    const res = await fetch(`${API_URL}/api/user/`, { credentials: "include" });
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 export const login = createAsyncThunk(
   "auth/login",
   async ({ email, password }: Ilogin, thunkAPI) => {
     const body = JSON.stringify({ email, password });
     try {
-      const res = await axios.post(`${API_URL}/api/user/login`, body, CONFIG);
-      const data = await res.data;
-      console.log(data);
+      const res = await fetch(`${API_URL}/api/user/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body,
+        credentials: "include",
+      });
+      const data = await res.json();
       return data;
     } catch (error) {
-      const err = error as AxiosError;
-      return err.response?.data;
+      console.log(error);
     }
   }
 );
@@ -62,11 +74,13 @@ interface IUser {
   Loading: boolean;
   LoginInMessage: string;
   RegisterMessage: string;
+  LogedIn: boolean;
 }
 
 const initialState: IUser = {
   User: {},
   Loading: false,
+  LogedIn: false,
   LoginInMessage: "",
   RegisterMessage: "",
 };
@@ -86,6 +100,7 @@ const authSlice = createSlice({
         state.LoginInMessage = data.message;
       } else {
         state.LoginInMessage = "Login Successful";
+        state.LogedIn = true;
         state.User = action.payload;
       }
     });
@@ -95,11 +110,15 @@ const authSlice = createSlice({
     builder.addCase(register.fulfilled, (state, action) => {
       state.Loading = false;
       const data = action.payload;
-      console.log(data);
       if (data.user) {
         state.RegisterMessage = "registred";
       } else {
-        state.RegisterMessage = data;
+        state.RegisterMessage = data.message;
+      }
+    });
+    builder.addCase(isLoged.fulfilled, (state, action) => {
+      if (action.payload.id) {
+        state.LogedIn = true;
       }
     });
   },

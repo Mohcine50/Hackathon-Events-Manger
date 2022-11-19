@@ -16,8 +16,10 @@ function Register() {
   const [password, setPassword] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [confirmedPassword, setConfirmedPassword] = useState<string>("");
-
   const [passwordMatch, setpasswordMatch] = useState<boolean>(true);
+  const [filled, setFilled] = useState<boolean>(false);
+  const [registrationErrorMessage, setRegistrationErrorMessage] =
+    useState<string>("");
 
   const submitRegistration = (e: FormEvent<HTMLElement>) => {
     e.preventDefault();
@@ -29,6 +31,8 @@ function Register() {
       confirmedPassword != ""
     ) {
       dispatch(register({ email, password, username }));
+    } else {
+      setFilled(true);
     }
   };
 
@@ -36,6 +40,13 @@ function Register() {
   useEffect(() => {
     if (RegisterMessage === "registred") {
       navigate("/login");
+      setEmail("");
+      setUsername("");
+      setPassword("");
+      setConfirmedPassword("");
+    } else if (RegisterMessage !== "registred") {
+      const a = RegisterMessage as string;
+      setRegistrationErrorMessage(a);
     }
   }, [RegisterMessage]);
 
@@ -61,6 +72,7 @@ function Register() {
         <label> E-mail</label>
         <input
           type='email'
+          value={email}
           placeholder='Enter Your Email'
           onChange={(e) => {
             setEmail(e.target.value);
@@ -70,6 +82,7 @@ function Register() {
         <input
           type='text'
           placeholder='Enter a Username'
+          value={username}
           onChange={(e) => {
             setUsername(e.target.value);
           }}
@@ -77,6 +90,7 @@ function Register() {
         <label>Password</label>
         <input
           type='password'
+          value={password}
           placeholder='Enter your password'
           onChange={(e) => {
             setPassword(e.target.value);
@@ -85,14 +99,29 @@ function Register() {
         <label>Confirm Password</label>
         <input
           type='password'
+          value={confirmedPassword}
           placeholder='Confirm your password'
           onChange={(e) => {
             setConfirmedPassword(e.target.value);
           }}
         />
-        <>{!passwordMatch && <h4 id='password_match'>Password not match</h4>}</>
+        <>
+          {!passwordMatch && (
+            <h4 className='password_match'>Password not match</h4>
+          )}
+        </>
         <input type='submit' value='Register' />
       </form>
+      <>
+        {RegisterMessage !== "registred" && (
+          <h4 className='password_match'>{registrationErrorMessage}</h4>
+        )}
+      </>
+      <>
+        {filled && (
+          <h4 className='password_match'>Please complete all fields</h4>
+        )}
+      </>
       <p>
         Already had an account{" "}
         <Link className='link-w' to='/login'>
