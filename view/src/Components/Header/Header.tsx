@@ -4,9 +4,12 @@ import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import profileImage from "../../Images/default-image.png";
+import { SIUser } from "../../features/auth-slice";
 function Header() {
-  const LogedIn = useSelector<RootState>((state) => state.User.LogedIn);
 
+  const LogedIn = useSelector<RootState>((state) => state.User.LogedIn);
+  const User = useSelector<RootState>(state=>state.User.User) as SIUser
+  
   return (
     <div className='header'>
       <div className='logo'>
@@ -36,7 +39,7 @@ function Header() {
         </ul>
         <>
           {LogedIn ? (
-            <img id='avatar' src={profileImage} alt='profile Avatar' />
+           <Link to={`/profile/${User?._id}`}> <img id='avatar' src={profileImage} alt='profile Avatar' /></Link>
           ) : (
             <div className='h-btns'>
               <button>

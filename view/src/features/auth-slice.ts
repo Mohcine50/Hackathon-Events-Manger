@@ -41,7 +41,7 @@ export const isLoged = createAsyncThunk("auth/isLoged", async (thunkAPI) => {
   try {
     const res = await fetch(`${API_URL}/api/user/`, { credentials: "include" });
     const data = await res.json();
-    console.log(data);
+    console.log(data)
     return data;
   } catch (error) {
     console.log(error);
@@ -69,8 +69,19 @@ export const login = createAsyncThunk(
   }
 );
 
+
+export type SIUser= {
+  _id?:string,
+  email?:string,
+  events?:[],
+  profile?:string,
+  register?:any,
+  submittions?:[],
+  username?:string
+}
+
 interface IUser {
-  User: {};
+  User: SIUser ;
   Loading: boolean;
   LoginInMessage: string;
   RegisterMessage: string;
@@ -78,7 +89,7 @@ interface IUser {
 }
 
 const initialState: IUser = {
-  User: {},
+  User:{} as SIUser,
   Loading: false,
   LogedIn: false,
   LoginInMessage: "",
@@ -92,6 +103,7 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(login.pending, (state) => {
       state.Loading = true;
+      
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.Loading = false;
@@ -117,8 +129,9 @@ const authSlice = createSlice({
       }
     });
     builder.addCase(isLoged.fulfilled, (state, action) => {
-      if (action.payload.id) {
+      if (action.payload.user) {
         state.LogedIn = true;
+        state.User = action.payload.user
       }
     });
   },

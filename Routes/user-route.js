@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { register, login, logOut } = require("../Controllers/user-controller");
+const { register, login, logOut ,getUserById} = require("../Controllers/user-controller");
 
 const { validate } = require("../Util/middlewares");
 
@@ -12,5 +12,6 @@ router.get("/", validate, (req, res) => {
 router.post("/register", register);
 router.post("/login", login);
 router.get("/logout", logOut);
+router.get("/userInfo/:userId", getUserById)
 
 module.exports = router;

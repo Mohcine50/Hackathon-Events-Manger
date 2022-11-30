@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./home.css";
 import event from "../../Images/event.svg";
 import Event from "../../Components/Event/Event";
 import Header from "../../Components/Header/Header";
 import { Outlet } from "react-router-dom";
 import Participant from "../../Components/Participants/Participant";
+
+
 function HomeCon() {
+
+  
+
   return (
     <div className='home'>
       <div className='hero'>

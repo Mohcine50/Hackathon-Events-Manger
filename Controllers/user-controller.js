@@ -3,6 +3,19 @@ const Profile = require("../Modules/Profile");
 const { passwordBcrypt, passwordCompare } = require("../Util/util");
 const jwt = require("jsonwebtoken");
 
+const getUserById = async (req,res)=>{
+  const { userId } = req.params;
+
+  try {
+    const user = await Event.findOne({ _id: userId });
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "user not found" });
+  }
+}
+
+
 const register = async (req, res) => {
   const { email, password, username } = req.body;
 
@@ -50,7 +63,7 @@ const login = async (req, res) => {
     return res.status(400).json({ message: "Wrong password" });
   }
 
-  const token = jwt.sign({ id: user._id }, process.env.SECRET_TOKEN_PHRASE);
+  const token = jwt.sign({ user: user }, process.env.SECRET_TOKEN_PHRASE);
   return res
     .cookie("token", token, {
       httpOnly: true,
@@ -67,4 +80,4 @@ const logOut = async (req, res) => {
     .json({ message: "Successfully logged out" });
 };
 
-module.exports = { register, login, logOut };
+module.exports = { register, login, logOut,getUserById };

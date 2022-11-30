@@ -9,6 +9,7 @@ const { validate } = require("./Util/middlewares");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 const corsOptions = {
