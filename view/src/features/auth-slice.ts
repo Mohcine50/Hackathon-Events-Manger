@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios, { AxiosError } from "axios";
 
 interface Ilogin {
   email: string;
@@ -74,7 +73,7 @@ export type SIUser= {
   _id?:string,
   email?:string,
   events?:[],
-  profile?:string,
+  profile:string,
   register?:any,
   submittions?:[],
   username?:string
@@ -113,7 +112,7 @@ const authSlice = createSlice({
       } else {
         state.LoginInMessage = "Login Successful";
         state.LogedIn = true;
-        state.User = action.payload;
+        state.User = data.user;
       }
     });
     builder.addCase(register.pending, (state) => {
