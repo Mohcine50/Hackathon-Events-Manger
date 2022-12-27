@@ -44,7 +44,7 @@ function Profile() {
     <div className='profile'>
       {isUser ? <>
       <div className='profile-info'>
-        <img src={profile.image} alt='profile' />
+        <img src={defautlProfile} alt='profile' />
         <h1>{profile.fullName}</h1>
         <h2>{profile.bio}</h2>
         <div className='es-infos'>

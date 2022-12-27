@@ -8,7 +8,6 @@ export const getProfile = createAsyncThunk("profile/getProfile",
     
     async (profileId:string,thunkAPI) =>{
         try{
-            console.log(profileId)
             const res = await fetch(`${API_URL}/api/profile/${profileId}`,{ credentials: "include" })
             const data = await res.json()
             return data
@@ -46,8 +45,8 @@ const profileSlice = createSlice({
         builder.addCase(getProfile.fulfilled, (state,action)=>{
             const data = action.payload
             console.log(data)
-            if (data.profile){
-                state.profile = data.profile
+            if (!data.message){
+                state.profile = data
             }
         })
     },
